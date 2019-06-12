@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-    private static final String BASE_URL = "https://rfidis.raf.edu.rs/raspored/json.php";
+    private static final String BASE_URL = "https://rfidis.raf.edu.rs/";
     private static final boolean DEBUG = true;
     private static final int READ_TIMEOUT = 10;
 

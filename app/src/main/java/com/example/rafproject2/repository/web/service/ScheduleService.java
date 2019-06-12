@@ -1,7 +1,7 @@
 package com.example.rafproject2.repository.web.service;
 
 
-import com.example.rafproject2.repository.web.model.Schedule;
+import com.example.rafproject2.repository.web.model.ScheduleApiModel;
 
 import java.util.List;
 
@@ -10,8 +10,12 @@ import retrofit2.http.GET;
 
 public interface ScheduleService {
 
-    @GET("raspored")
-    public Call<List<Schedule>> getSchedule();
+    @GET("raspored/json.php")
+    public Call<List<ScheduleApiModel>> getSchedule();
+
+//    @GET("predmet")
+//    public Call<List<ScheduleApiModel>> getScheduleBySubject(@Path("predmet") String subject);
+
 
 
 

@@ -1,7 +1,7 @@
 package com.example.rafproject2.repository.web.api;
 
 
-import com.example.rafproject2.repository.web.model.Schedule;
+import com.example.rafproject2.repository.web.model.ScheduleApiModel;
 import com.example.rafproject2.repository.web.service.ScheduleService;
 import com.example.rafproject2.repository.web.service.ServiceGenerator;
 
@@ -17,9 +17,8 @@ public class ScheduleApi {
         scheduleService= ServiceGenerator.createService(ScheduleService.class);
     }
 
-    public Call<List<Schedule>> getSchedule(){
+    public Call<List<ScheduleApiModel>> getSchedule(){
         return scheduleService.getSchedule();
     }
-
 
 }

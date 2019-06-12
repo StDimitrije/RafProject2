@@ -1,41 +1,59 @@
-package com.example.rafproject2.repository.web.model;
+package com.example.rafproject2.repository.db.entity;
 
-import com.google.gson.annotations.SerializedName;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-public class Schedule {
+@Entity(tableName = "schedule")
+public class ScheduleEntity {
 
-    @SerializedName("id")
-    private int mId;
-    @SerializedName("predmet")
+
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="id")
+    private String mId;
+
+    @ColumnInfo(name = "subject")
     private String mSubject;
-    @SerializedName("tip")
+
+    @ColumnInfo(name = "type")
     private String mType;
-    @SerializedName("nastavnik")
+
+    @ColumnInfo(name = "teacher")
     private String mTeacher;
-    @SerializedName("grupe")
+
+    @ColumnInfo(name = "groups")
     private String mGroups;
-    @SerializedName("dan")
+
+    @ColumnInfo(name = "day")
     private String mDay;
-    @SerializedName("termin")
+
+    @ColumnInfo(name = "time")
     private String mTime;
-    @SerializedName("ucionica")
+
+    @ColumnInfo(name = "classroom")
     private String mClassRoom;
 
-    public Schedule(String subject, String type, String teacher, String groups, String day, String time, String classRoom){
+
+    public ScheduleEntity(@NonNull String id, String subject, String type, String teacher, String groups, String day, String time, String classrom){
+
+        mId = id;
         mSubject = subject;
         mType = type;
         mTeacher = teacher;
         mGroups = groups;
         mDay = day;
         mTime = time;
-        mClassRoom = classRoom;
+        mClassRoom = classrom;
     }
 
-    public int getmId() {
+    @NonNull
+    public String getmId() {
         return mId;
     }
 
-    public void setmId(int mId) {
+    public void setmId(@NonNull String mId) {
         this.mId = mId;
     }
 
@@ -94,4 +112,19 @@ public class Schedule {
     public void setmClassRoom(String mClassRoom) {
         this.mClassRoom = mClassRoom;
     }
+
+    @Override
+    public String toString() {
+        return "MovieEntity{" +
+                "mId=" + mId +
+                ", mSubject='" + mSubject + '\'' +
+                ", mType='" + mType + '\'' +
+                ", mTeacher='" + mTeacher + '\'' +
+                ", mGroups='" + mGroups + '\'' +
+                ", mDay='" + mDay + '\'' +
+                ", mTime='" + mTime + '\'' +
+                ", mClassRoom='" + mClassRoom + '\'' +
+                '}';
+    }
+
 }
