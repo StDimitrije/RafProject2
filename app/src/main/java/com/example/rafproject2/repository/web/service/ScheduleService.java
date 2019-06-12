@@ -13,10 +13,4 @@ public interface ScheduleService {
     @GET("raspored/json.php")
     public Call<List<ScheduleApiModel>> getSchedule();
 
-//    @GET("predmet")
-//    public Call<List<ScheduleApiModel>> getScheduleBySubject(@Path("predmet") String subject);
-
-
-
-
 }

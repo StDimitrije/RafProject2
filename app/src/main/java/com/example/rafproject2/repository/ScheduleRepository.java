@@ -1,6 +1,7 @@
 package com.example.rafproject2.repository;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.example.rafproject2.model.ScheduleFilter;
 import com.example.rafproject2.repository.db.ScheduleDatabase;
@@ -9,6 +10,7 @@ import com.example.rafproject2.repository.db.entity.ScheduleEntity;
 import com.example.rafproject2.repository.web.api.ScheduleApi;
 import com.example.rafproject2.repository.web.model.Resource;
 import com.example.rafproject2.repository.web.model.ScheduleApiModel;
+import com.example.rafproject2.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +39,20 @@ public class ScheduleRepository {
         mExecutorService = Executors.newCachedThreadPool();
     }
 
-    public MutableLiveData<Resource<Void>> getSchedule(){
+    public LiveData<Resource<Void>> getSchedule(){
         mScheduleApi.getSchedule().enqueue(new Callback<List<ScheduleApiModel>>() {
             @Override
             public void onResponse(Call<List<ScheduleApiModel>> call, Response<List<ScheduleApiModel>> response) {
 
                 notifyResult(true);
+                insertScheduleToDb(response.body());
             }
 
             @Override
             public void onFailure(Call<List<ScheduleApiModel>> call, Throwable t) {
+
+                notifyResult(false);
+                Log.e(TAG, "onFailure: " + t.toString());
 
             }
         });
@@ -54,12 +60,13 @@ public class ScheduleRepository {
     }
 
     public LiveData<List<ScheduleEntity>> getFilteredSchedule(ScheduleFilter filter) {
-        return mScheduleDao.getFilteredSchedule(filter.getmSubject(), filter.getmTeacher(), filter.getmDay(), filter.getmGroup());
+        return mScheduleDao.getFilteredSchedule(filter.getSubject(), filter.getDay(), filter.getGroup());
     }
 
     public LiveData<List<ScheduleEntity>> getCompleteSchedule(){
         return mScheduleDao.getCompleteSchedule();
     }
+
 
 
     private void notifyResult(boolean isSuccessful){
@@ -81,17 +88,17 @@ public class ScheduleRepository {
     private List<ScheduleEntity> transformApiModelToEntity(List<ScheduleApiModel> scheduleApiModelList) {
 
         List<ScheduleEntity> scheduleEntityList = new ArrayList<>();
-        for (ScheduleApiModel scheduleApiModel: scheduleApiModelList){
-            String id = scheduleApiModel.getmId();
-            String subject = scheduleApiModel.getmSubject();
-            String type = scheduleApiModel.getmType();
-            String teacher = scheduleApiModel.getmTeacher();
-            String classroom = scheduleApiModel.getmClassRoom();
-            String day = scheduleApiModel.getmDay();
-            String groups = scheduleApiModel.getmGroups();
-            String time = scheduleApiModel.getmTime();
 
-            ScheduleEntity scheduleEntity = new ScheduleEntity(id,subject,type,teacher,groups,day,time,classroom);
+        for (ScheduleApiModel scheduleApiModel: scheduleApiModelList){
+            String subject = scheduleApiModel.getSubject();
+            String type = scheduleApiModel.getType();
+            String teacher = scheduleApiModel.getTeacher();
+            String classroom = scheduleApiModel.getClassRoom();
+            String day = scheduleApiModel.getDay();
+            String groups = scheduleApiModel.getGroups();
+            String time = scheduleApiModel.getTime();
+
+            ScheduleEntity scheduleEntity = new ScheduleEntity(Util.generateId(),subject,type,teacher,groups,day,time,classroom);
             scheduleEntityList.add(scheduleEntity);
         }
         return scheduleEntityList;

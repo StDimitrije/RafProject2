@@ -12,7 +12,7 @@ public class ScheduleEntity {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name="id")
-    private String mId;
+    private int mId;
 
     @ColumnInfo(name = "subject")
     private String mSubject;
@@ -32,12 +32,11 @@ public class ScheduleEntity {
     @ColumnInfo(name = "time")
     private String mTime;
 
-    @ColumnInfo(name = "classroom")
+    @ColumnInfo(name = "classRoom")
     private String mClassRoom;
 
 
-    public ScheduleEntity(@NonNull String id, String subject, String type, String teacher, String groups, String day, String time, String classrom){
-
+    public ScheduleEntity(@NonNull int id, String subject, String type, String classRoom, String teacher, String groups, String day, String time){
         mId = id;
         mSubject = subject;
         mType = type;
@@ -45,72 +44,72 @@ public class ScheduleEntity {
         mGroups = groups;
         mDay = day;
         mTime = time;
-        mClassRoom = classrom;
+        mClassRoom = classRoom;
     }
 
     @NonNull
-    public String getmId() {
+    public int getId() {
         return mId;
     }
 
-    public void setmId(@NonNull String mId) {
-        this.mId = mId;
+    public void setmId(@NonNull int id) {
+        mId = id;
     }
 
-    public String getmSubject() {
+    public String getSubject() {
         return mSubject;
     }
 
-    public void setmSubject(String mSubject) {
-        this.mSubject = mSubject;
+    public void setSubject(String subject) {
+        mSubject = subject;
     }
 
-    public String getmType() {
+    public String getType() {
         return mType;
     }
 
-    public void setmType(String mType) {
-        this.mType = mType;
+    public void setType(String type) {
+        mType = type;
     }
 
-    public String getmTeacher() {
+    public String getTeacher() {
         return mTeacher;
     }
 
-    public void setmTeacher(String mTeacher) {
-        this.mTeacher = mTeacher;
+    public void setTeacher(String teacher) {
+        mTeacher = teacher;
     }
 
-    public String getmGroups() {
+    public String getGroups() {
         return mGroups;
     }
 
-    public void setmGroups(String mGroups) {
-        this.mGroups = mGroups;
+    public void setGroups(String groups) {
+        mGroups = groups;
     }
 
-    public String getmDay() {
+    public String getDay() {
         return mDay;
     }
 
-    public void setmDay(String mDay) {
-        this.mDay = mDay;
+    public void setDay(String day) {
+        mDay = day;
     }
 
-    public String getmTime() {
+    public String getTime() {
         return mTime;
     }
 
-    public void setmTime(String mTime) {
-        this.mTime = mTime;
+    public void setTime(String time) {
+        mTime = time;
     }
 
-    public String getmClassRoom() {
+    public String getClassRoom() {
         return mClassRoom;
     }
 
-    public void setmClassRoom(String mClassRoom) {
-        this.mClassRoom = mClassRoom;
+    public void setClassRoom(String classRoom) {
+        mClassRoom = classRoom;
     }
 
     @Override

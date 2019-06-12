@@ -3,7 +3,7 @@ package com.example.rafproject2.adapter;
 import android.content.Context;
 
 import com.example.rafproject2.fragment.ChatFragment;
-import com.example.rafproject2.fragment.RasporedFragment;
+import com.example.rafproject2.fragment.ScheduleFragment;
 import com.example.rafproject2.fragment.WallFragment;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return RasporedFragment.newInstance();
+                return ScheduleFragment.newInstance();
             case 1:
                 return ChatFragment.newInstance();
             case 2:

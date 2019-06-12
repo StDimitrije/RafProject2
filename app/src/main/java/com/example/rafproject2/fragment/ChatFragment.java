@@ -29,11 +29,11 @@ public class ChatFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_chat,container,false);
 
-        mChatAdapter = new ChatAdapter();
-        mRecyclerView = view.findViewById(R.id.fragment_raspored_recycler_view);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setAdapter(mChatAdapter);
+//        mChatAdapter = new ChatAdapter();
+////        mRecyclerView = view.findViewById(R.id.fragment_raspored_recycler_view);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
+//        mRecyclerView.setLayoutManager(linearLayoutManager);
+//        mRecyclerView.setAdapter(mChatAdapter);
 
         return view;
     }

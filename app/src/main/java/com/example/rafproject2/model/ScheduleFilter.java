@@ -7,42 +7,40 @@ public class ScheduleFilter {
     private String mDay;
     private String mGroup;
 
-    public ScheduleFilter(String subject, String teacher, String day, String group){
+    public ScheduleFilter(String subject, String day, String group){
         mSubject = subject;
-        mTeacher = teacher;
         mDay = day;
         mGroup = group;
     }
 
-    public String getmSubject() {
+    public String getSubject() {
         return mSubject;
     }
 
-    public void setmSubject(String mSubject) {
-        this.mSubject = mSubject;
+    public void setSubject(String subject) { mSubject = subject;
     }
 
-    public String getmTeacher() {
+    public String getTeacher() {
         return mTeacher;
     }
 
-    public void setmTeacher(String mTeacher) {
-        this.mTeacher = mTeacher;
+    public void setTeacher(String teacher) {
+        mTeacher = teacher;
     }
 
-    public String getmDay() {
+    public String getDay() {
         return mDay;
     }
 
-    public void setmDay(String mDay) {
-        this.mDay = mDay;
+    public void setDay(String day) {
+        mDay = day;
     }
 
-    public String getmGroup() {
+    public String getGroup() {
         return mGroup;
     }
 
-    public void setmGroup(String mGroup) {
-        this.mGroup = mGroup;
+    public void setGroup(String group) {
+        mGroup = group;
     }
 }

@@ -4,8 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class ScheduleApiModel {
 
-    @SerializedName("id")
-    private String mId;
     @SerializedName("predmet")
     private String mSubject;
     @SerializedName("tip")
@@ -21,77 +19,33 @@ public class ScheduleApiModel {
     @SerializedName("ucionica")
     private String mClassRoom;
 
-    public ScheduleApiModel(String subject, String type, String teacher, String groups, String day, String time, String classRoom){
-        mSubject = subject;
-        mType = type;
-        mTeacher = teacher;
-        mGroups = groups;
-        mDay = day;
-        mTime = time;
-        mClassRoom = classRoom;
-    }
 
-    public String getmId() {
-        return mId;
-    }
 
-    public void setmId(String mId) {
-        this.mId = mId;
-    }
-
-    public String getmSubject() {
+    public String getSubject() {
         return mSubject;
     }
 
-    public void setmSubject(String mSubject) {
-        this.mSubject = mSubject;
-    }
-
-    public String getmType() {
+    public String getType() {
         return mType;
     }
 
-    public void setmType(String mType) {
-        this.mType = mType;
-    }
-
-    public String getmTeacher() {
+    public String getTeacher() {
         return mTeacher;
     }
 
-    public void setmTeacher(String mTeacher) {
-        this.mTeacher = mTeacher;
-    }
-
-    public String getmGroups() {
+    public String getGroups() {
         return mGroups;
     }
 
-    public void setmGroups(String mGroups) {
-        this.mGroups = mGroups;
-    }
-
-    public String getmDay() {
+    public String getDay() {
         return mDay;
     }
 
-    public void setmDay(String mDay) {
-        this.mDay = mDay;
-    }
-
-    public String getmTime() {
+    public String getTime() {
         return mTime;
     }
 
-    public void setmTime(String mTime) {
-        this.mTime = mTime;
-    }
-
-    public String getmClassRoom() {
+    public String getClassRoom() {
         return mClassRoom;
-    }
-
-    public void setmClassRoom(String mClassRoom) {
-        this.mClassRoom = mClassRoom;
     }
 }
