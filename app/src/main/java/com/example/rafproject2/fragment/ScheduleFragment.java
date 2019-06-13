@@ -3,9 +3,11 @@ package com.example.rafproject2.fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 import com.example.rafproject2.R;
 import com.example.rafproject2.adapter.SubjectAdapter;
 import com.example.rafproject2.model.ScheduleFilter;
+import com.example.rafproject2.model.UserResponse;
 import com.example.rafproject2.repository.db.entity.ScheduleEntity;
 import com.example.rafproject2.repository.web.model.Resource;
 import com.example.rafproject2.viewmodel.MainViewModel;
@@ -40,7 +43,6 @@ public class ScheduleFragment extends Fragment {
 
 
 
-
     public static ScheduleFragment newInstance() {
         return new ScheduleFragment();
     }
@@ -52,33 +54,46 @@ public class ScheduleFragment extends Fragment {
 
         mGroupSpinner = view.findViewById(R.id.spinner_group);
         mDaySpinner = view.findViewById(R.id.spinner_day);
+        ArrayAdapter<CharSequence> groupSpinner = ArrayAdapter.createFromResource(view.getContext(), R.array.groupsArray,android.R.layout.simple_spinner_dropdown_item);
+        groupSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mGroupSpinner.setAdapter(groupSpinner);
+        ArrayAdapter<CharSequence> daySpinner = ArrayAdapter.createFromResource(view.getContext(), R.array.daysArray,android.R.layout.simple_spinner_dropdown_item);
+        daySpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mDaySpinner.setAdapter(daySpinner);
+
         mSearchEt = view.findViewById(R.id.fragment_raspored_search_et);
-        mSearchEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String subject = mSearchEt.getText().toString();
-                String teacher = mSearchEt.getText().toString();
-                String group = mGroupSpinner.getSelectedItem().toString();
-                String day = mDaySpinner.getSelectedItem().toString();
-                ScheduleFilter filter = new ScheduleFilter(subject,day,group);
-                mainViewModel.setFilter(filter);
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+//        mSearchEt.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
 
 
         mSearchBtn = view.findViewById(R.id.fragment_raspored_search_btn);
+        mSearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String subject = mSearchEt.getText().toString();
+//                String teacher = mSearchEt.getText().toString();
+                String group = mGroupSpinner.getSelectedItem().toString();
+                String day = mDaySpinner.getSelectedItem().toString();
+                ScheduleFilter filter = new ScheduleFilter(subject,day,group);
+                mainViewModel.setFilter(filter);
+            }
+        });
 
         mRecyclerView = view.findViewById(R.id.fragment_raspored_recycler_view);
         mSubjectAdapter = new SubjectAdapter();
@@ -113,6 +128,14 @@ public class ScheduleFragment extends Fragment {
             @Override
             public void onChanged(List<ScheduleEntity> scheduleEntityList) {
                 mSubjectAdapter.setData(scheduleEntityList);
+            }
+        });
+
+        mainViewModel.getUserStoreLiveData().observe(this, new Observer<UserResponse>() {
+            @Override
+            public void onChanged(UserResponse userResponse) {
+                Toast.makeText(getContext(), "Welcome " + userResponse.getUser(), Toast.LENGTH_SHORT).show();
+
             }
         });
 

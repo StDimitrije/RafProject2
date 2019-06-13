@@ -3,6 +3,8 @@ package com.example.rafproject2.viewmodel;
 import android.app.Application;
 
 import com.example.rafproject2.model.ScheduleFilter;
+import com.example.rafproject2.model.UserResponse;
+import com.example.rafproject2.repository.AuthRepository;
 import com.example.rafproject2.repository.ScheduleRepository;
 import com.example.rafproject2.repository.db.ScheduleDatabase;
 import com.example.rafproject2.repository.db.entity.ScheduleEntity;
@@ -22,11 +24,13 @@ public class MainViewModel extends AndroidViewModel {
     private ScheduleRepository mScheduleRepository;
     private MutableLiveData<ScheduleFilter> mFilteredLiveData;
     private LiveData<List<ScheduleEntity>> mFilteredScheduleLiveData;
+    private AuthRepository mAuthRepository;
 
 
     public MainViewModel(@NonNull Application application) {
         super(application);
 
+        mAuthRepository = new AuthRepository(application);
         mScheduleRepository = new ScheduleRepository(application);
         mFilteredLiveData = new MutableLiveData<>();
         mFilteredScheduleLiveData = Transformations.switchMap(mFilteredLiveData,
@@ -53,6 +57,13 @@ public class MainViewModel extends AndroidViewModel {
 
     public void setFilter(ScheduleFilter filter){
         mFilteredLiveData.setValue(filter);
+    }
+
+    public void logOut() {
+        mAuthRepository.clearUser();
+    }
+    public LiveData<UserResponse> getUserStoreLiveData() {
+        return mAuthRepository.getUserStoreLiveData();
     }
 
 }
