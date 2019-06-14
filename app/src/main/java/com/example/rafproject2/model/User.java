@@ -2,6 +2,8 @@ package com.example.rafproject2.model;
 
 public class User {
 
+    private String mId;
+
     private String mIndexId;
 
     private String mName;
@@ -9,6 +11,16 @@ public class User {
     public User(String indexId, String name) {
         mIndexId = indexId;
         mName = name;
+    }
+
+    public User(){}
+
+    public String getId(){
+        return mId;
+    }
+
+    public void setId(String id){
+        mId=id;
     }
 
     public String getIndexId() {
