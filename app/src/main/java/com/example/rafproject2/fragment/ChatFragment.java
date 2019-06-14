@@ -69,11 +69,6 @@ public class ChatFragment extends Fragment {
 
                 for (DataSnapshot childDataSnapshot:dataSnapshot.getChildren()) {
                     User user = childDataSnapshot.getValue(User.class);
-                    // Since each employee is identified by key in the realtime db,
-                    // we get it as a part od data snapshot object, and not inside of object itself.
-                    // We want to add it to the object when we get employee objects from the server.
-                    // Why? Because we have to uniqly identify objects in DiffUtil, and we want to
-                    // use key to get reference to the object when we want to delete it from the db.
                     String key = childDataSnapshot.getKey();
                     user.setId(key);
                     mUserList.add(user);
