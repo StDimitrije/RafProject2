@@ -2,6 +2,8 @@
     <string name="app_name">RafProject2</string>
     <string name="fetch_success_message">Data successfully fetched</string>
     <string name="fetch_fail_message">Fetch failed, showing cached data</string>
+    
+    <string name="app_file_provider" translatable="false">com.example.rafproject2.fileprovider</string>
 
     <string-array name="daysArray">
         <item>DAYS</item>

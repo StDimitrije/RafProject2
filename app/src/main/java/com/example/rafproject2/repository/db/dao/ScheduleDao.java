@@ -21,9 +21,10 @@ public interface ScheduleDao {
 
     @Query("SELECT * FROM schedule " +
             "WHERE subject LIKE :subject || '%' " +
+            "AND teacher LIKE :teacher || '%'" +
             "AND day LIKE :day || '%' " +
             "AND groups LIKE :group")
-    LiveData<List<ScheduleEntity>> getFilteredSchedule(String subject, String day, String group);
+    LiveData<List<ScheduleEntity>> getFilteredSchedule(String subject, String teacher, String day, String group);
 
     @Query("SELECT * FROM schedule WHERE id LIKE :id")
     LiveData<ScheduleEntity> getScheduleById(String id);

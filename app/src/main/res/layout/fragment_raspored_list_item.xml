@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/schedule_list_item_custom">
 
     <TextView
         android:id="@+id/raspored_subject_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/black"
         />
     <TextView
         android:id="@+id/raspored_subject_type_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/raspored_subject_tv"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/raspored_subject_tv"/>
     <TextView
         android:id="@+id/raspored_professor_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_below="@id/raspored_subject_tv"/>
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/raspored_subject_type_tv"/>
     <TextView
         android:id="@+id/raspored_classroom_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_marginBottom="5dp"
         android:layout_below="@id/raspored_professor_tv"/>
     <TextView
         android:id="@+id/raspored_groups_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_marginBottom="5dp"
         android:layout_below="@id/raspored_classroom_tv"/>
 
 
@@ -39,11 +44,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
         android:layout_below="@+id/raspored_day_tv"/>
     <TextView
         android:id="@+id/raspored_day_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_alignParentRight="true"
         />
 

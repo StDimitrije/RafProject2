@@ -1,6 +1,7 @@
 package com.example.rafproject2.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -20,6 +21,7 @@ import com.example.rafproject2.R;
 import com.example.rafproject2.adapter.FragmentAdapter;
 import com.example.rafproject2.model.UserResponse;
 import com.example.rafproject2.viewmodel.MainViewModel;
+import com.example.rafproject2.viewmodel.WallViewModel;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
@@ -27,6 +29,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private MainViewModel mMainViewModel;
+    private WallViewModel mWallViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,4 +80,20 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode != REQUEST_CAMERA_PHOTO ) {
+//            return;
+//        }
+//
+//        if (resultCode != RESULT_OK) {
+//            Toast.makeText(this, "You didn't capture photo!", Toast.LENGTH_SHORT).show();
+//            mTakePhotoBtn.setEnabled(true);
+//            return;
+//        }
+//
+//        mWallViewModel.uploadPhoto();
+//    }
 }

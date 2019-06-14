@@ -40,12 +40,12 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
     public void onBindViewHolder(@NonNull SubjectHolder holder, int position) {
         ScheduleEntity scheduleEntity = mDataSet.get(position);
         holder.mSubjectTv.setText(scheduleEntity.getSubject());
-        holder.mSubjectTypeTv.setText(scheduleEntity.getType());
+        holder.mSubjectTypeTv.setText("Tip: " + scheduleEntity.getType());
         holder.mDayTv.setText(scheduleEntity.getDay());
         holder.mTimeTv.setText(scheduleEntity.getTime());
-        holder.mGroupsTv.setText(scheduleEntity.getGroups());
-        holder.mProfessorTv.setText(scheduleEntity.getTeacher());
-        holder.mClassRoomTv.setText(scheduleEntity.getClassRoom());
+        holder.mGroupsTv.setText("Grupa: " + scheduleEntity.getGroups());
+        holder.mProfessorTv.setText("Profesor: " + scheduleEntity.getTeacher());
+        holder.mClassRoomTv.setText("Ucionica: " + scheduleEntity.getClassRoom());
 
     }
 

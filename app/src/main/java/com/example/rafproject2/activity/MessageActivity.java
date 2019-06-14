@@ -47,11 +47,11 @@ public class MessageActivity extends AppCompatActivity {
     private String mUserId;
     private String sender;
 
-    private FirebaseDatabase firebaseUser;
     private DatabaseReference dbReference;
     private Intent intent;
 
     private static final String USERNAME_KEY = "userNameKey";
+    private static final String INDEX_ID_KEY = "indexIdKey";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class MessageActivity extends AppCompatActivity {
 
         String packageName = getPackageName();
         SharedPreferences sharedPreferences = getSharedPreferences(packageName, Context.MODE_PRIVATE);
-        sender = sharedPreferences.getString(USERNAME_KEY, null);
+        sender = sharedPreferences.getString(INDEX_ID_KEY, null);
 
 
         mSendBtn = findViewById(R.id.chat_send_btn);

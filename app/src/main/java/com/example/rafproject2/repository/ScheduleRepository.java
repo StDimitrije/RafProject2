@@ -60,7 +60,7 @@ public class ScheduleRepository {
     }
 
     public LiveData<List<ScheduleEntity>> getFilteredSchedule(ScheduleFilter filter) {
-        return mScheduleDao.getFilteredSchedule(filter.getSubject(), filter.getDay(), filter.getGroup());
+        return mScheduleDao.getFilteredSchedule(filter.getSubject(),filter.getTeacher(), filter.getDay(), filter.getGroup());
     }
 
     public LiveData<List<ScheduleEntity>> getCompleteSchedule(){

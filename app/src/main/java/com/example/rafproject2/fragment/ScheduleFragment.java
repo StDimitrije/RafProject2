@@ -62,35 +62,16 @@ public class ScheduleFragment extends Fragment {
         mDaySpinner.setAdapter(daySpinner);
 
         mSearchEt = view.findViewById(R.id.fragment_raspored_search_et);
-//        mSearchEt.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
-
-
 
         mSearchBtn = view.findViewById(R.id.fragment_raspored_search_btn);
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String subject = mSearchEt.getText().toString();
-//                String teacher = mSearchEt.getText().toString();
+                String teacher = mSearchEt.getText().toString();
                 String group = mGroupSpinner.getSelectedItem().toString();
                 String day = mDaySpinner.getSelectedItem().toString();
-                ScheduleFilter filter = new ScheduleFilter(subject,day,group);
+                ScheduleFilter filter = new ScheduleFilter(subject,teacher,day,group);
                 mainViewModel.setFilter(filter);
             }
         });

@@ -22,31 +22,50 @@
     </Spinner>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:id="@+id/fragment_raspored_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner_day"
-        android:layout_above="@id/fragment_raspored_search_et"
+        android:layout_above="@id/schedule_Rl"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
+
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <RelativeLayout
+        android:id="@+id/schedule_Rl"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lightGrey">
+
     <EditText
         android:id="@+id/fragment_raspored_search_et"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="13dp"
+        android:layout_height="35dp"
         android:hint="Search professor/subject"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/fragment_raspored_search_btn"
+        android:background="@drawable/edit_text_custom"
+        android:padding="5dp"/>
 
     <Button
         android:id="@+id/fragment_raspored_search_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginBottom="13dp"
         android:text="Search"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:textColor="@color/white"
+        android:background="@drawable/roundbutton"/>
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

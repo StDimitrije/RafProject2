@@ -11,14 +11,11 @@ import android.widget.TextView;
 
 import com.example.rafproject2.R;
 import com.example.rafproject2.model.Chat;
-import com.example.rafproject2.model.User;
-import com.example.rafproject2.util.UserDiffCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageHolder> {
@@ -26,12 +23,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
     private static final int MSG_TYPE_LEFT = 0;
     private static final int MSG_TYPE_RIGHT = 1;
     private static final String USERNAME_KEY = "userNameKey";
+    private static final String INDEX_ID_KEY = "indexIdKey";
 
 private List<Chat> mChat;
 private Context mContext;
 
 public MessageAdapter(Context context, List<Chat> chat){
-    mChat = chat;
+        mChat = chat;
         mContext = context;
         mChat=new ArrayList<>();
 
@@ -81,7 +79,7 @@ public class MessageHolder extends RecyclerView.ViewHolder {
     public int getItemViewType(int position) {
         String packageName = mContext.getPackageName();
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(packageName, Context.MODE_PRIVATE);
-        String sender = sharedPreferences.getString(USERNAME_KEY, null);
+        String sender = sharedPreferences.getString(INDEX_ID_KEY, null);
         if (mChat.get(position).getSender().equals(sender)){
             return MSG_TYPE_RIGHT;
         }else{

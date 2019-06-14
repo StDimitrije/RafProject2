@@ -7,8 +7,9 @@ public class ScheduleFilter {
     private String mDay;
     private String mGroup;
 
-    public ScheduleFilter(String subject, String day, String group){
+    public ScheduleFilter(String subject,String teacher, String day, String group){
         mSubject = subject;
+        mTeacher = teacher;
         mDay = day;
         mGroup = group;
     }
